@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Real-time Markdown editor with live preview. No data is saved." />
+    <title>Markdown Editor</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1 class="app-title">Markdown Editor</h1>
+      <p class="app-subtitle" id="app-subtitle">
+        No data is stored —
+        <kbd>Ctrl</kbd>+<kbd>Enter</kbd> toggles preview mode
+      </p>
+    </header>
+
+    <main class="editor-layout" aria-label="Markdown editor application">
+      <section class="pane editor-pane" aria-labelledby="editor-heading">
+        <h2 id="editor-heading" class="pane-title">Editor</h2>
+        <textarea
+          id="editor"
+          class="editor-textarea"
+          aria-label="Markdown source input"
+          aria-multiline="true"
+          aria-describedby="editor-hint"
+          placeholder="Type your Markdown here…"
+          spellcheck="false"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+        ></textarea>
+        <p id="editor-hint" class="sr-only">
+          Type Markdown syntax. The preview panel on the right updates automatically.
+        </p>
+      </section>
+
+      <div class="pane-divider" aria-hidden="true"></div>
+
+      <section
+        class="pane preview-pane"
+        aria-labelledby="preview-heading"
+        role="region"
+      >
+        <h2 id="preview-heading" class="pane-title">Preview</h2>
+        <div
+          id="preview"
+          class="preview-content"
+          aria-live="polite"
+          aria-label="Rendered Markdown preview"
+          aria-atomic="false"
+        ></div>
+      </section>
+    </main>
+
+    <script src="/vendor/marked.min.js"></script>
+    <script src="/vendor/purify.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
